@@ -13,7 +13,7 @@ function generatePassword() {
     return // cancels if password is a number
   }
 
-  if (passwordLength < 8 || passwordLegnth > 128) { // password length 8 - 128
+  if (passwordLength < 8 || passwordLength > 128) { // password length 8 - 128
     window.prompt("Password length must be between 8 - 128 characters")
     return
   }
@@ -21,7 +21,23 @@ function generatePassword() {
   var userNumbers = window.confirm("Do you want number?") // confirm numbers
   var userSymbols = window.confirm("Do you want symbols?") // confirm symbols
   var userLowerCase = window.confirm("Do you want lower case letters?") // confirm lowercase
-  var userUpperCase = window.confirm("Do you want upper case letters?") // cofirm uppercase
+  var userUpperCase = window.confirm("Do you want upper case letters?") // confirm uppercase
+
+  // arrays with numbers, symbols, lowercase, uppercase
+  var numberList = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+  var symbolList = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")"]
+  var lowercaseList = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+  var uppercaseList = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+
+  var passwordOption = []
+  
+  for (var i = 0; i < lowercaseList.length; i++) { // Loop so password(userInput) could go through the confirm messages
+    uppercaseList[i] = lowercaseList[i].toUpperCase()
+  }
+
+    if (userNumbers === true) {
+
+    }
 
 }
 
