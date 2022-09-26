@@ -3,7 +3,7 @@
 
 ## Description
 
-The purpose of this password generator is to build a website where a user can generate a random 8 - 128 length password with or without lowercase, uppercase, numeric, and/or special characters. 
+The purpose of this password generator is to build a website where a user can generate a random 8 - 128 length password with or without lowercase, uppercase, numeric, and/or special characters. This repo contains HTML, CSS and Javascript.
 
 ## Installation
 
