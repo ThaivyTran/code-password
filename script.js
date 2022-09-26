@@ -16,9 +16,9 @@ function getRandomItem(list) {
 
 function generatePassword() {
 
-  var userInput = window.prompt("How long do you want the password?")
+  var userInput = window.prompt("How long do you want the password?") // Frist prompt will appear when button is clicked
 
-  var passwordLength = parseInt(userInput)
+  var passwordLength = parseInt(userInput) // Based on userInput that'll be the length
 
   if (isNaN(passwordLength)) { // cancels if password is a number
     window.prompt("Error: That is not a number")
@@ -40,7 +40,7 @@ function generatePassword() {
   var lowercaseList = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
   var uppercaseList = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
 
-  var userOptions = []
+  var userOptions = [] // variable for user password options
   
   for (var i = 0; i < lowercaseList.length; i++){ // Loop so password(userInput) could go through the confirm messages
     uppercaseList[i] = lowercaseList[i].toUpperCase()
@@ -66,15 +66,14 @@ function generatePassword() {
       userOptions.push(lowercaseList)
     }
 
-    var generatedPassword = ""
+    var generatedPassword = "" // generatedPassword is defined
 
-    for (var i = 0; i < passwordLength; i++) {// 
+    for (var i = 0; i < passwordLength; i++) {
       var randomList = getRandomItem(userOptions)
       var randomChar = getRandomItem(randomList)
-      generatedPassword += randomChar
+      generatedPassword += randomChar // Prints random characters given the length
     }
-    // console.log(generatedPassword)
-    return generatedPassword
+    return generatedPassword // Password will be generated into the webpage when returned
 }
 
 // Write password to the #password input
