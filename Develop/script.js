@@ -7,7 +7,7 @@ function randomInt(min, max) {
     min = 0
   }
   var rand = Math.random()
-  return Math.floor(min*(1 - rand) + rand*max) // make into whole numbers
+  return Math.floor(min*(1 - rand) + rand*max) // make decimals into whole numbers
 }
 
 function getRandomItem(list) {
@@ -20,9 +20,9 @@ function generatePassword() {
 
   var passwordLength = parseInt(userInput)
 
-  if (isNaN(passwordLength)) {
+  if (isNaN(passwordLength)) { // cancels if password is a number
     window.prompt("Error: That is not a number")
-    return // cancels if password is a number
+    return
   }
 
   if (passwordLength < 8 || passwordLength > 128) { // password length 8 - 128
@@ -42,11 +42,11 @@ function generatePassword() {
 
   var userOptions = []
   
-  for (var i = 0; i < lowercaseList.length; i++) { // Loop so password(userInput) could go through the confirm messages
+  for (var i = 0; i < lowercaseList.length; i++){ // Loop so password(userInput) could go through the confirm messages
     uppercaseList[i] = lowercaseList[i].toUpperCase()
   }
 
-    if (userNumbers === true) {
+    if (userNumbers === true){
       userOptions.push(numberList)
     }
 
@@ -58,18 +58,23 @@ function generatePassword() {
       userOptions.push(lowercaseList)
     }
 
-    if (userUpperCase === true) {
+    if (userUpperCase === true){
       userOptions.push(uppercaseList)
+    }
+
+    if (userOptions.length === 0){ //if the list is empty will push lower case by default
+      userOptions.push(lowercaseList)
     }
 
     var generatedPassword = ""
 
-    for (var i = 0; i < passwordLength; i++) { // 
+    for (var i = 0; i < passwordLength; i++) {// 
       var randomList = getRandomItem(userOptions)
       var randomChar = getRandomItem(randomList)
       generatedPassword += randomChar
     }
-
+    // console.log(generatedPassword)
+    return generatedPassword
 }
 
 // Write password to the #password input
