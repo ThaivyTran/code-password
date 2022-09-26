@@ -1,6 +1,18 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
-var password = document.getElementById("password");
+
+function randomInt(min, max) {
+  if (!max) {
+    max = min
+    min = 0
+  }
+  var rand = Math.random()
+  return Math.floor(min*(1 - rand) + rand*max) // make into whole numbers
+}
+
+function getRandomItem(list) {
+  return list[randomInt(list.length)] // random position in a list
+}
 
 function generatePassword() {
 
@@ -22,37 +34,43 @@ function generatePassword() {
   var userSymbols = window.confirm("Do you want symbols?") // confirm symbols
   var userLowerCase = window.confirm("Do you want lower case letters?") // confirm lowercase
   var userUpperCase = window.confirm("Do you want upper case letters?") // confirm uppercase
-
-  // arrays with numbers, symbols, lowercase, uppercase
-  var numberList = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+// arrays with numbers, symbols, lowercase, uppercase
+  var numberList = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"] 
   var symbolList = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")"]
   var lowercaseList = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
   var uppercaseList = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
 
-  var passwordOption = []
+  var userOptions = []
   
   for (var i = 0; i < lowercaseList.length; i++) { // Loop so password(userInput) could go through the confirm messages
     uppercaseList[i] = lowercaseList[i].toUpperCase()
   }
 
     if (userNumbers === true) {
+      userOptions.push(numberList)
+    }
 
+    if (userSymbols === true){
+      userOptions.push(symbolList)
+    }
+
+    if (userLowerCase === true){
+      userOptions.push(lowercaseList)
+    }
+
+    if (userUpperCase === true) {
+      userOptions.push(uppercaseList)
+    }
+
+    var generatedPassword = ""
+
+    for (var i = 0; i < passwordLength; i++) { // 
+      var randomList = getRandomItem(userOptions)
+      var randomChar = getRandomItem(randomList)
+      generatedPassword += randomChar
     }
 
 }
-
-// function generatePassword(){
-//   console.log("You clicked the button")
-
-// // 1. Prompt the user for the password criteria
-// //    a. Password Length 8<128
-// //    b. Lowercase, uppercase, numbers, special characters
-// // 2. Validate the input.
-// // 3. Generate password based on criteria.Generate
-// // 4. Display password to the page.
-//   return "generated password"
-
-// }
 
 // Write password to the #password input
 function writePassword() {
